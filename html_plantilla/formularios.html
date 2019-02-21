@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>FORMULARIOS</h1>
+	<form>
+		<fieldset>
+			<legend>Tus datos personales</legend>
+			<div>
+			<!--<label >
+			Ingrese su nombre
+			<input type = "text">
+			</label> -->
+			<input name="username" placeholder="Ingrese su usuario">
+		</div>
+		<div>
+			<label >
+				Ingrese su correo
+				<input type="email">
+			</label>
+		</div>
+		<div>
+			<label>
+				Ingrese su telefono
+				<input type="number" value = "2" readonly=""> <!-- readonly para no poder editar -->
+			</label>
+		</div>
+		</fieldset>
+		<!--
+		<label for="nombre">Ingrese su nombre</label>
+		<input type="text" id="nombre">
+		<button>Enviar</button> -->
+		<fieldset>
+			<legend>Otros datos</legend>
+			<div>
+			<label >
+			Ingrese su contraseña
+			<input type="password" name="password" required> <!-- required para que se vuelv aobligatorio -->
+		</label>
+		</div>
+		<div>
+			<label >
+				Fecha
+				<input type="date">
+			</label>
+		</div>
+		</fieldset>
+		<fieldset>
+			<legend>Pasatiempos</legend>
+			<label ><input type="checkbox">Deporte</label>
+			<label ><input type="checkbox">Musica</label>
+			<label ><input type="checkbox">Cine</label>
+			<label ><input type="checkbox">Leer</label>
+		</fieldset>
+		<fieldset>
+			<legend>Genero</legend>
+			<label ><input type="radio" name="gender">hombre</label>
+			<label ><input type="radio" name = "gender">mujer</label>
+			<label ><input type="radio" name="gender">dick</label>
+			<label ><input type="radio" name="gender">no quiero decirlo</label>
+		</fieldset>
+		<fieldset>
+			<legend>Select y opciones</legend>
+			<label for="country">Escoge tu pais</label>
+			<select name="country" id="country">
+				<optgroup label="America">
+					<option value="Peru">Peru</option>
+					<option value="Colombia">Colombia</option>
+					<option value="Venezuela">Venezuela</option>
+					<option value="Uruguay">Uruguay</option>
+				</optgroup>
+				<optgroup label="Europa">
+					<option value="España">España</option>
+					<option value="Italia">Italia</option>
+					
+				</optgroup>
+				<textarea name="mensaje" id="" cols="30" rows="10" placeholder="Escribe tu mensaje"></textarea>
+			</select><!--Lista de opciones -->
+		</fieldset>
+		<input type="submit" value="Iniciar Sesion"> <!--Lo mismo que boton -->
+		<!-- <button>Enviar</button> --> 
+	</form>
+</body>
+</html>
