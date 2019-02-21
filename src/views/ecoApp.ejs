@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-
-  </head>
-  <body>
+<% include partials/head %>
+<% include nav %>
 
     <div id="map" style="width: 700px; height: 500px;"></div>
 
-    <button>Ubicación de recojo del Reciclaje</button>
+    <h3>Seleccione su ubicacion</h3>
+    <form action="/ecoApp/add" method="post">
+      <label for="idUser">Ingrese ID User</label>
+      <input type="text" name="idUser"><br>
+      <label for="lat">Latitud</label>
+      <input id="lat" type="text" name="lat"><br>
+      <label for="lng">Logitud</label>
+      <input id="lng" type="text" name="lng"><br>
+      <label for="adv"></label>
+      <textarea name="adv" rows="1" cols="80"></textarea><br>
+
+      <button submit>Listo Recogan Mi Reciclaje </button>
+    </form>
 
 
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr2-lyq7o5vDRj9JyEOTELG_lDwvEwcuA">
     </script>
 
-    <script>
 
+
+    <script>
       const fn_mal = () => {
         console.log("algo no funciona en la geolocalizacion");
       }
@@ -72,8 +79,16 @@
       marker.addListener('click', () => {
         infowindow.open(map, marker)
       })
+
+      document.getElementById('lat').value = posicion.lat
+      document.getElementById('lng').value = posicion.lng
+
+      console.log(idUser.value);
+      console.log(lat.value);
+      console.log(lng.value)
+      console.log(abv.value);
     }
 
     </script>
-  </body>
-</html>
+    
+<% include partials/footer%>

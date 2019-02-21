@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const logger = require('morgan')
 
+bodyParser = require('body-parser')
 const app = express()
 
 const primary = require('./routes/primary')
@@ -16,6 +17,9 @@ app.set('view engine', 'ejs')
 
 //middlewars
 app.use(logger('dev'))
+
+//entenderan los datos enviados del html
+app.use(bodyParser.urlencoded({extended: false}))
 
 //Organizando las rutas hemos redireccionado las rutas de primary
 app.use('/', primary)
