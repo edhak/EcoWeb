@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+
+    <div id="map" style="width: 700px; height: 500px;"></div>
+
+    <button>Ubicación de recojo del Reciclaje</button>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr2-lyq7o5vDRj9JyEOTELG_lDwvEwcuA">
+    </script>
+
+    <script>
+
+      const fn_mal = () => {
+        console.log("algo no funciona en la geolocalizacion");
+      }
+
+      const fn_ok = (rta) => {
+        let lat = rta.coords.latitude
+        let lon = rta.coords.longitude
+        console.log(lat, lon);
+
+        initMap(lat,lon);
+      }
+
+      navigator.geolocation.getCurrentPosition(fn_ok,fn_mal)
+
+      let initMap = (latitud, longitud) => {
+        let posicion = {lat: latitud, lng: longitud}
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: posicion
+        })
+
+      var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<img src="images_temp.jpeg" style="width: 50px; height: 50px;">'+
+      '<h1 id="firstHeading" class="firstHeading">tu mismo</h1>'+
+      '<div id="bodyContent">'+
+      '<br/>'+
+      'nombre:'+
+      '<br/>'+
+      'apellido:'+
+      '<br/>'+
+      'dni:'+
+      '<br/>'+
+      'estrellas:'+
+      '<p>'+
+      'oficio <a href="#">'+
+      'contactar'+
+      '</p>'+
+      '</div>'+
+      '</div>';
+
+      let infowindow = new google.maps.InfoWindow({
+        content: contentString
+      })
+
+      let marker = new google.maps.Marker({
+        position: posicion,
+        map: map
+      })
+
+      marker.addListener('click', () => {
+        infowindow.open(map, marker)
+      })
+    }
+
+    </script>
+  </body>
+</html>

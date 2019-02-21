@@ -1,10 +1,11 @@
 const path = require('path')
 const express = require('express')
 const logger = require('morgan')
-const router = express.Router()
-
 
 const app = express()
+
+const primary = require('./routes/primary')
+
 
 
 //Settings
@@ -16,11 +17,11 @@ app.set('view engine', 'ejs')
 //middlewars
 app.use(logger('dev'))
 
-app.use('/',(req, res) => {
-  res.send('Hola mundo el servidor esta corriendo')
-})
+//Organizando las rutas hemos redireccionado las rutas de primary
+app.use('/', primary)
 
-//escchar al servidor
+
+//escucha al servidor
 app.listen(app.get('port'), () => {
     console.log(`esta corriendo el servidor ${app.get('port')}`)
 })
