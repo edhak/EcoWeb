@@ -6,15 +6,15 @@
     <h3>Seleccione su ubicacion</h3>
     <form action="/ecoApp/add" method="post">
       <label for="idUser">Ingrese ID User</label>
-      <input type="text" name="idUser"><br>
+      <input id="idUser" type="text" name="idUser"><br>
       <label for="lat">Latitud</label>
       <input id="lat" type="text" name="lat"><br>
       <label for="lng">Logitud</label>
       <input id="lng" type="text" name="lng"><br>
       <label for="adv"></label>
-      <textarea name="adv" rows="1" cols="80"></textarea><br>
+      <textarea id= "adv"name="adv" rows="1" cols="80"></textarea><br>
 
-      <button submit>Listo Recogan Mi Reciclaje </button>
+      <button type="submit"> Listo Recogan Mi Reciclaje </button>
     </form>
 
 
@@ -90,5 +90,5 @@
     }
 
     </script>
-    
+
 <% include partials/footer%>

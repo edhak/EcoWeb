@@ -1,3 +1,4 @@
+const db = require('../libs/db-connection')()
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -11,4 +12,4 @@ const TaskSchema = Schema({
   }
 })
 
-module.exports = mongoose.model('tasks', TaskSchema)
+module.exports = db.model('tasks', TaskSchema)

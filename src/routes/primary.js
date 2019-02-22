@@ -14,6 +14,14 @@ router.get('/ecoApp', (req, res) => { //como hacer funcionar con un boton?
   res.render('ecoApp')
 })
 
+router.get('/gracias', (req, res) => { //como hacer funcionar con un boton?
+  res.render('gracias')
+})
+
+router.get('/respuestas', (req, res) => { //como hacer funcionar con un boton?
+  res.render('respuestas')
+})
+
 router.post('/ecoApp/add', async (req, res, next) => {
   let body = req.body
   let datos = {
@@ -24,13 +32,12 @@ router.post('/ecoApp/add', async (req, res, next) => {
       lng: body.lng
     }
   }
-
-  let task = new Task(datos)
+  const task = new Task(datos)
   console.log(req.body)
   console.log(task)
+
   await task.save()
-  
-  console.log(t);
+
   console.log("se guardo")
   res.redirect('/gracias')
 
