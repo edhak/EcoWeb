@@ -18,6 +18,9 @@ app.set('view engine', 'ejs')
 //middlewars
 app.use(logger('dev'))
 
+app.use('/static', express.static(__dirname + '/public'));
+
+
 //entenderan los datos enviados del html
 // app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.urlencoded({extended: false}))

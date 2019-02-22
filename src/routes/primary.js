@@ -18,8 +18,19 @@ router.get('/gracias', (req, res) => { //como hacer funcionar con un boton?
   res.render('gracias')
 })
 
-router.get('/respuestas', (req, res) => { //como hacer funcionar con un boton?
-  res.render('respuestas')
+router.get('/respuestas', (req, res, next) => { //como hacer funcionar con un boton?
+  //console.log(req.params)
+  Task.find({}, (err, tasks) => {
+    if (err) throw err
+    res.render('respuestas',{
+      title: "Datos",
+      tasks: tasks
+    })
+    //console.log(tasks);
+  })
+  // const task = await Task.findById(req.params)
+  // console.log(task);
+  // res.render('respuestas',{task})
 })
 
 router.post('/ecoApp/add', async (req, res, next) => {
@@ -33,8 +44,8 @@ router.post('/ecoApp/add', async (req, res, next) => {
     }
   }
   const task = new Task(datos)
-  console.log(req.body)
-  console.log(task)
+  // console.log(req.body)
+  // console.log(task)
 
   await task.save()
 

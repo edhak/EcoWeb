@@ -1,10 +1,88 @@
 <% include partials/head %>
 <% include nav %>
 
-    <div>
-      <h2></h2>
-      <p>Aqui va las respuestas (direcciones) todos lo puntos que se añadieron</p>
-
+    <div class="padre">
+      <h2>Ubicación de todos los puntos</h2>
+      <div class="hijo_uno" id="map" style="width: 700px; height: 500px;"></div>
     </div>
 
+    <% for(let i = 0 ; i<tasks.length ; i++) {%>
+      <%= tasks[i].coords.lat %> <br>
+      <%= tasks[i].coords.lng %> <br>
+      <br>
+    <% }
+    //exports.modules = tasks
+    %>
+
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr2-lyq7o5vDRj9JyEOTELG_lDwvEwcuA">
+    </script>
+
+    <script>
+      //Posición Actual
+      // const express = require('express')
+      // const router = express.Router()
+      // const Task = require('../model/task')
+      //
+
+
+      let fn_mal = () => {
+        console.log("algo anda mal, no se obtine las localización");
+      }
+
+      var posicion_inicio;
+
+      let fn_ok = (rta) => {
+        posicion_inicio = {
+          lat: rta.coords.latitude,
+          lng: rta.coords.longitude
+        }
+        initMap()
+        console.log(posicion_inicio)
+      }
+
+      navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+
+      // router.get('/respuestas', (req, res, next) => { //como hacer funcionar con un boton?
+      //   //console.log(req.params)
+      //   Task.find({}, async (err, tasks) => {
+      //     if (err) throw err
+      //     res.render('respuestas',{
+      //       title: "Datos",
+      //       tasks: tasks
+      //     })
+      //
+      //     await initMap(tasks)
+      //     //console.log(tasks);
+      //   })
+      // })
+
+      let initMap = () => {
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: posicion_inicio
+        });
+
+        let marker = new google.maps.Marker({
+          position: posicion_inicio,
+          map: map,
+          title: 'YO'
+        });
+
+
+          // for(i = 0; i<datos.length; i++){
+          //   let position = new google.maps.LatLng(
+          //                 datos[i].coords.lat,
+          //                 datos[i].coords.lng
+          //                 );
+          //               // console.log(datos[i].coord.latitud);
+          //   // bounds.extend(position);
+          //   marker = new google.maps.Marker({
+          //     position: position,
+          //     map: map
+          //   });
+          // }//fin for
+       }
+    </script>
 <% include partials/footer %>

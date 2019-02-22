@@ -1,10 +1,93 @@
 <% include partials/head %>
 <% include nav %>
 
-    <div>
-      <h2>Información de la pagina</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <figure id="main-banner">
+      <img src="/static/images/banner.jpg" alt="Imagenes de For Honor" class="img-responsive">
+       <figcaption>
+        <h3>ECONSEJO DEL DIA</h3>
+        <p>No tires nada a la basura si se puede reparar, reciclar o reutilizar, tal vez pueda ser útil para otra persona.</p>
+        <a href="#" class="boton">Más Econsejos</a>
+      </figcaption>
+    </figure><!-- main-banner -->
 
-    </div>
+    <aside id="mensaje" class="padded">
+      <div class="container">
+      <h2>ECOWEB | SAVING OUR ENVIRONMENT </h2>
+      <p>Web ecologica que brinda informacion sobre como ayudar a mantener sano nuestro planeta. Brindamos noticias actualizadas bla bla bla.....
+      Tambien contamos con una APP para apoyar el recilaje en nuestra region</p>
+      </div><!-- container -->
+    </aside><!-- mensaje -->
+
+    <section id="empresa">
+      <div class="container">
+        <div class="row">
+          <article class="col col-50 col-centrado-vertical">
+            <h2>Nuestra Empresa</h2>
+            <p>PRIMERA EMPRESA EN EL PAÍS EN LOGRAR QUE SUS CLIENTES GENEREN CERO BASURA GRACIAS A SU EQUIPO DE PROFESIONALES QUE COMPARTEN LOS MISMOS VALORES:.</p>
+            <ul>
+              <li>Nos gusta lo que hacemos</li><li>Seriedad en la disposición de los residuos de nuestros clientes</li><li>Nos adaptamos a las características de nuestros clientes y a las nuevas tecnologías</li><li>Somos una empresa de servicio al cliente</li><li>Queremos dejar un mejor planeta a las futuras generaciones</li>
+            </ul>
+          </article>
+          <figure class="col col-50 fig-empresa">
+            <img src="/static/images/empresa.png" alt="Nuestro equipo de trabajo" class="img-responsive">
+            <figcaption>
+              <h3>Nuestro equipo</h3>
+              <p>INSERTAR DETALLE DE NUESTRO EQUIPO...</p>
+            </figcaption>
+          </figure>
+        </div><!-- row -->
+      </div><!-- container -->
+    </section><!-- empresa -->
+
+    <section id="noticias" class="padded">
+      <div class="container">
+
+      <h2>Noticias</h2>
+      <!--(div>h3{Noticia$}+(p>lipsum)*2)*3-->
+
+      <div class="row">
+      <article class="col">
+        <h3>Noticia1</h3>
+        <p>Insertar Noticia 1</p>
+        <a href="#">VER + NOTICIAS</a>
+      </article><!-- col -->
+      <article class="col">
+        <h3>Noticia2</h3>
+        <p>Insertar noticia 2</p>
+        <a href="#">VER + NOTICIAS</a>
+      </article><!-- col -->
+      <article class="col">
+        <h3>Noticia3</h3>
+        <p>Insertar noticia 3</p>
+        <a href="#">VER + NOTICIAS</a>
+      </article><!-- col -->
+      </div><!-- row -->
+
+      </div><!-- container -->
+    </section><!-- noticias -->
+
+
+    <section id="eventos" class="padded">
+      <div class="container">
+        <h2>Eventos</h2>
+        <div class="row">
+          <article class="col col-50">
+            <h3>March Event: ECOFEST 2018</h3>
+            <p>*Insertar informacion sobre evento*</p>
+            <div class="videoWrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lUvOaGXO6l0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </article>
+          <article class="col">
+            <h3>Evento2</h3>
+            <p>*Insertar informacion sobre evento*</p>
+          </article>
+          <article class="col">
+            <h3>Evento3</h3>
+            <p>*Insertar informacion sobre evento*</p>
+          </article>
+        </div><!-- row -->
+      </div><!-- container -->
+    </section><!-- eventos -->
 
 <% include partials/footer %>

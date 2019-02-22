@@ -1,28 +1,33 @@
 <% include partials/head %>
 <% include nav %>
+    <div class="padre">
 
-    <div id="map" style="width: 700px; height: 500px;"></div>
+      <h2>Seleccione su Ubicación</h2>
+      <p class="hijo_uno">Seleccione su ubicación, y nosotros llegaremos entre las 7 y 8 de la noche para recoger el Reciclaje . GRACIAS POR CONTRIBUIR CON EL AMBIENTE</p>
 
-    <h3>Seleccione su ubicacion</h3>
-    <form action="/ecoApp/add" method="post">
-      <label for="idUser">Ingrese ID User</label>
-      <input id="idUser" type="text" name="idUser"><br>
-      <label for="lat">Latitud</label>
-      <input id="lat" type="text" name="lat"><br>
-      <label for="lng">Logitud</label>
-      <input id="lng" type="text" name="lng"><br>
-      <label for="adv"></label>
-      <textarea id= "adv"name="adv" rows="1" cols="80"></textarea><br>
+      <div class="hijo_uno"id="map" style="width: 700px; height: 500px;">
+      </div>
+    </div>
 
-      <button type="submit"> Listo Recogan Mi Reciclaje </button>
-    </form>
+    <div class="padre">
+      <h3 class="hijo_uno">Ingrese los datos faltantes</h3>
+      <form class="hijo_uno" action="/ecoApp/add" method="post">
+        <label for="idUser">Ingrese ID User :</label> <br>
+        <input id="idUser" type="text" name="idUser"><br>
+        <label for="lat">Latitud :</label><br>
+        <input id="lat" type="text" name="lat"><br>
+        <label for="lng">Logitud :</label><br>
+        <input id="lng" type="text" name="lng"><br>
+        <label for="adv">Ingrese si tiene alguna advertencia :</label><br>
+        <textarea id= "adv"name="adv" rows="1" cols="80"></textarea><br>
 
+        <button type="submit"> Listo Recogan Mi Reciclaje </button>
+      </form>
+  </div>
 
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=APIKEY">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr2-lyq7o5vDRj9JyEOTELG_lDwvEwcuA">
     </script>
-
-
 
     <script>
       const fn_mal = () => {
@@ -46,47 +51,40 @@
           center: posicion
         })
 
-      var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<img src="images_temp.jpeg" style="width: 50px; height: 50px;">'+
-      '<h1 id="firstHeading" class="firstHeading">tu mismo</h1>'+
-      '<div id="bodyContent">'+
-      '<br/>'+
-      'nombre:'+
-      '<br/>'+
-      'apellido:'+
-      '<br/>'+
-      'dni:'+
-      '<br/>'+
-      'estrellas:'+
-      '<p>'+
-      'oficio <a href="#">'+
-      'contactar'+
-      '</p>'+
-      '</div>'+
-      '</div>';
-
-      let infowindow = new google.maps.InfoWindow({
-        content: contentString
-      })
-
       let marker = new google.maps.Marker({
         position: posicion,
-        map: map
+        map: map,
+        title: 'Mi Ubicacion actual'
       })
 
-      marker.addListener('click', () => {
-        infowindow.open(map, marker)
-      })
+      google.maps.event.addListener(map, 'click', (event) => {
+        marker.setMap(null) ;// elima lod markers anteriores
+        posicion ={
+          lat:event.latLng.lat(),
+          lng:event.latLng.lng()
+        }
 
+        marker = new google.maps.Marker({
+          position: posicion,
+          map: map,
+          title: "Mi ubicación Cambiada"
+        })
+        console.log(posicion);
+      })
+      //cuando se inicializa el mapa
       document.getElementById('lat').value = posicion.lat
       document.getElementById('lng').value = posicion.lng
 
-      console.log(idUser.value);
-      console.log(lat.value);
-      console.log(lng.value)
-      console.log(abv.value);
+      //actualiza cada ves que el marcador se mueve
+      document.getElementById('map').addEventListener('click', () => {
+        document.getElementById('lat').value = posicion.lat
+        document.getElementById('lng').value = posicion.lng
+
+        console.log(idUser.value);
+        console.log(lat.value);
+        console.log(lng.value)
+        console.log(abv.value);
+      })
     }
 
     </script>
